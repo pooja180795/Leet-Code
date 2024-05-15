@@ -1,3 +1,12 @@
+'''
+Problem Name: set matrix zeros
+Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+
+You must do it in place.
+
+'''
+
+
 class Solution:
     def setZeroes(self, matrix):
         """
