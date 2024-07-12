@@ -1,0 +1,29 @@
+name: Daily LeetCode Upload
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Runs daily at 2 AM UTC
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Add new LeetCode solutions
+      run: |
+        git config --global user.name 'pooja180795'
+        git config --global user.email 'poojachothani.187@gmail.com'
+        if [ -d "leetcode" ]; then
+          cd leetcode
+          git add .
+          git commit -m "Daily update with new LeetCode solutions" || echo "No changes to commit"
+        fi
+
+    - name: Push changes
+      run: |
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
