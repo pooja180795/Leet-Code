@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    int c, previous = 0;
+    printf("enter string = ");
+    while((c = getchar()) != EOF)
+    {
+        if(c != ' ')
+        {
+            putchar(c);
+            previous = 1;
+        }
+        else if( c == ' ' && previous == 1)
+        {
+            putchar(c);
+            previous = 0;
+        }
+    }
+    return 0;
+}
